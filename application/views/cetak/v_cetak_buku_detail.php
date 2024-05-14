@@ -1,0 +1,139 @@
+<?php
+class PDF extends FPDF
+{
+	
+	function Content($detail_buku){
+		foreach($detail_buku as $row){
+			
+			$this->SetLeftMargin(40);
+			$this->setFont('Arial','',7);
+			$this->Ln(6);
+			$this->setFillColor(255,255,255);
+			$this->Cell(20,0);
+			$this->Cell(20,0,$row->uk_panjang,0,0,'L');
+			$this->Cell(65,0);
+			$this->Cell(20,0,$row->bk_sumbu1,0,0,'L');
+			$this->Ln(2);
+			$this->Cell(30,0);
+			$this->Cell(20,0,$row->uk_lebar,0,0,'L');
+			$this->Ln(2);
+			$this->Cell(40,0);
+			$this->Cell(75,0);
+			$this->Cell(20,0,$row->bk_sumbu2,0,0,'L');
+			$this->Ln(1);
+			$this->Cell(20,0);
+			$this->Cell(20,0,$row->uk_tinggi,0,0,'L');
+			$this->Ln(1);
+			$this->Cell(40,0);
+			$this->Cell(65,0);
+			$this->Cell(20,0,$row->bk_sumbu3,0,0,'L');
+			$this->Ln(2);
+			$this->Cell(30,0);
+			$this->Cell(20,0,$row->uk_julur_belakang,0,0,'L');
+			$this->Ln(2);
+			$this->Cell(20,0);
+			$this->Cell(20,0,$row->uk_julur_depan,0,0,'L');
+			$this->Cell(75,0);
+			$this->Cell(20,0,$row->bk_sumbu4,0,0,'L');
+			
+			$this->Ln(6);
+			$this->Cell(20,0);
+			$this->Cell(20,0,$row->js_sumbu1,0,0,'L');
+			$this->Cell(65,0);
+			$this->Cell(20,0,$row->bk_total,0,0,'L');
+			$this->Ln(2);
+			$this->Cell(30,0);
+			$this->Cell(20,0,$row->js_sumbu2,0,0,'L');
+			$this->Ln(2);
+			$this->Cell(20,0);
+			$this->Cell(20,0,$row->js_sumbu3,0,0,'L');
+			$this->Ln(2);
+			$this->Cell(30,0);
+			$this->Cell(20,0,$row->js_sumbuq,0,0,'L');
+			
+			$this->Ln(7);
+			$this->Cell(10,0);
+			$this->Cell(25,0,$row->dbm_panjang,0,0,'L');
+			$this->Cell(65,0);
+			$this->Cell(25,0,$row->da_orang,0,0,'L');
+			$this->Ln(2);
+			$this->Cell(20,0);
+			$this->Cell(25,0,$row->dbm_lebar,0,0,'L');
+			$this->Ln(2);
+			$this->Cell(10,0);
+			$this->Cell(25,0,$row->dbm_tinggi,0,0,'L');
+			$this->Cell(65,0);
+			$this->Cell(25,0,$row->da_barang,0,0,'L');
+			$this->Ln(2);
+			$this->Cell(10,0);
+			$this->Cell(25,0,$row->dbm_bahan_bak,0,0,'L');
+			$this->Ln(4);
+			$this->Cell(100,0);
+			$this->Cell(25,0,$row->jbi,0,0,'L');
+			
+			$this->Ln(3);
+			$this->Cell(10,0);
+			$this->Cell(25,0,$row->dt_panjang,0,0,'L');
+			$this->Ln(2);
+			$this->Cell(20,0);
+			$this->Cell(25,0,$row->dt_lebar,0,0,'L');
+			$this->Ln(2);
+			$this->Cell(10,0);
+			$this->Cell(25,0,$row->dt_tinggi,0,0,'L');
+			$this->Ln(2);
+			$this->Cell(20,0);
+			$this->Cell(25,0,$row->dt_volume,0,0,'L');
+			
+			$this->Ln(6);
+			$this->Cell(10,0);
+			$this->Cell(25,0,$row->dt_jenis_muatan,0,0,'L');
+			$this->Cell(65,0);
+			$this->Cell(25,0,$row->jbi_kombinasi,0,0,'L');
+			$this->Ln(2);
+			$this->Cell(10,0);
+			$this->Cell(25,0,$row->dt_berat_jenis_muatan,0,0,'L');
+			$this->Ln(2);
+			$this->Cell(10,0);
+			$this->Cell(25,0,$row->dt_bahan_tangki,0,0,'L');
+			$this->Ln(10);
+			$this->Cell(20,0);
+			$this->Cell(25,0,$row->ban_sumbu1,0,0,'L');
+			$this->Ln(2);
+			$this->Cell(20,0);
+			$this->Cell(25,0,$row->ban_sumbu2,0,0,'L');
+			$this->Ln(1);
+			$this->Cell(100,0);
+			$this->Cell(25,0,$row->muatan_sum_berat,0,0,'L');
+			$this->Ln(2);
+			$this->Cell(20,0);
+			$this->Cell(25,0,$row->ban_sumbu3,0,0,'L');
+			$this->Ln(2);
+			$this->Cell(20,0);
+			$this->Cell(25,0,$row->ban_sumbu4,0,0,'L');
+			$this->Ln(4);
+			$this->Cell(20,0);
+			$this->Cell(25,0,$row->konf_sumbu,0,0,'L');
+			$this->Ln(3);
+			$this->Cell(100,0);
+			$this->Cell(25,0,$row->kelas_jl_min,0,0,'L');
+			$this->Ln(3);
+			$this->Cell(20,0);
+			$this->Cell(25,0,$row->jbb,0,0,'L');
+			$this->Ln(6);
+			$this->Cell(20,0);
+			$this->Cell(25,0,$row->jbb_kombinasi,0,0,'L');
+		}
+	}
+	
+}
+
+
+$this->fpdf = new PDF("L","mm",array(125,175));
+$this->fpdf->SetAutoPageBreak(false);
+$this->fpdf->SetMargins(10,10,5); 
+$this->fpdf->SetTitle($title);
+$this->fpdf->AliasNbPages();
+$this->fpdf->AddPage();
+$this->fpdf->Content($detail_buku);
+$this->fpdf->Output("I",$title);
+?>
